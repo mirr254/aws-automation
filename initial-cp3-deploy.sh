@@ -3,7 +3,7 @@
 #####################################################################################
 #This script is run on the remote server. It performs all the steps that one would  #
 #do manually on the server.                                                         #
-#e.g git pull, installing dependancies, restarting gunicorn                         #
+#e.g git pull, installing dependancies, restarting gunicorn server                  #
 #####################################################################################
 
 set -e
@@ -11,6 +11,7 @@ set -e
 ### configurations###
 
 APP_DIR=/var/www/brighteventsapi
+API_DIR=/var/www/brighteventsapi/Bright-Events
 GIT_URL=https://github.com/mirr254/Bright-Events.git
 
 ###Automation steps ###
@@ -53,7 +54,7 @@ ENDOFFILE
 
   #create a symlink from sites-enabled to point to point to the  brightevents.com file created above
 
-   sudo ln -f -s /etc/nginx/sites-available/brightevents.com /etc/nginx/sites-enabled/brightevents.com
+   sudo ln -f -s /etc/nginx/sites-available/brightevents.com /etc/nginx/sites-enabled/brightevents.com #-f to remove other symlink files created
 
     #restart the webserver
     sudo service nginx restart
@@ -87,6 +88,11 @@ function setUpApi {
 
     #activate the venv
     source venv-api/bin/activate
+
+    #check if  Bright-Events dir exist and remove it
+    if [[ -d $API_DIR ]] ; then
+        sudo rm -rf $API_DIR
+    fi
 
     #clone the repo 
     sudo git clone $GIT_URL
