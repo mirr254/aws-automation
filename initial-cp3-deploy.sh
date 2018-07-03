@@ -32,9 +32,14 @@ function setUpNginx {
     sudo locale-gen en_US.UTF-8
 
     #remove the nginx default pages
-    sudo rm /etc/nginx/sites-enabled/default /etc/nginx/sites-available/default
+    #check if directory exists then delete
+    if [[ -d /etc/nginx/sites-enabled/default ]] && [[ -d /etc/nginx/sites-available/default ]] ; then
+        echo " nginx default directory exists. Deleting it..."
+        sudo rm /etc/nginx/sites-enabled/default /etc/nginx/sites-available/default
+    fi
 
     #create a proxy config file and a symlink to it in sites enabled
+    
     sudo cat > /etc/nginx/sites-available/brightevents.com << ENDOFFILE
 server {
     listen 80;
@@ -44,7 +49,8 @@ server {
 }
 ENDOFFILE
 
-#create a symlink from sites-enabled to point to point to the  brightevents.com file created above
+  #create a symlink from sites-enabled to point to point to the  brightevents.com file created above
+
    sudo ln -s /etc/nginx/sites-available/brightevents.com /etc/nginx/sites-enabled/brightevents.com
 
     #restart the webserver
@@ -66,8 +72,13 @@ function setUpApi {
     sudo pip3 install virtualenv
 
     #cd to app directory
-    sudo mkdir $APP_DIR
-    cd $APP_DIR
+    if [ -d $APP_DIR ] ; then
+        cd $APP_DIR
+    else
+        sudo mkdir $APP_DIR
+        cd $APP_DIR
+    fi
+    
 
     #create virtue env
     sudo virtualenv venv-api
