@@ -39,14 +39,16 @@ function setUpNginx {
     fi
 
     #create a proxy config file and a symlink to it in sites enabled
+    sudo touch /etc/nginx/sites-available/brightevents.com
+    sudo chown -R $USER:$USER /etc/nginx/sites-available/brightevents.com  #assign ownership to the account that we are currently signed in. easily edit content
     
     sudo cat > /etc/nginx/sites-available/brightevents.com << ENDOFFILE
-server {
-    listen 80;
-    location / {
-        proxy_pass http:127.0.0.1:8000/;
-    }
-}
+        server {
+            listen 80;
+            location / {
+                proxy_pass http:127.0.0.1:8000/;
+            }
+        }
 ENDOFFILE
 
   #create a symlink from sites-enabled to point to point to the  brightevents.com file created above
