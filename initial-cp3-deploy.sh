@@ -26,6 +26,7 @@ function setUpNginx {
     sudo apt-get install nginx
 
     #the following language configs are when the erro unsupported locale setting appears
+    echo "++++setting up locale languages...++++"
     export LANGUAGE=en_US.UTF-8 
     export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 
     sudo locale-gen en_US.UTF-8
@@ -34,7 +35,7 @@ function setUpNginx {
     sudo rm /etc/nginx/sites-enabled/default /etc/nginx/sites-available/default
 
     #create a proxy config file and a symlink to it in sites enabled
-    cat > /etc/nginx/sites-available/brightevents.com << ENDOFFILE
+    sudo cat > /etc/nginx/sites-available/brightevents.com << ENDOFFILE
 server {
     listen 80;
     location / {
@@ -56,7 +57,7 @@ ENDOFFILE
 #flask API configurations
 function setUpApi {
 
-    echo " Setting up app....."
+    echo " ++++ Setting up app..... +++++"
 
     #install pip3
     sudo apt-get install python3-pip
