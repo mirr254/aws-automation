@@ -53,7 +53,7 @@ ENDOFFILE
 
   #create a symlink from sites-enabled to point to point to the  brightevents.com file created above
 
-   sudo ln -s /etc/nginx/sites-available/brightevents.com /etc/nginx/sites-enabled/brightevents.com
+   sudo ln -f -s /etc/nginx/sites-available/brightevents.com /etc/nginx/sites-enabled/brightevents.com
 
     #restart the webserver
     sudo service nginx restart
