@@ -26,7 +26,7 @@ function setUpNginx {
     sudo apt-get update #update server libraries
     sudo apt-get install nginx
 
-    #the following language configs are when the erro unsupported locale setting appears
+    #the following language configs are when the error unsupported locale setting appears
     echo "++++setting up locale languages...++++"
     export LANGUAGE=en_US.UTF-8 
     export LANG=en_US.UTF-8 export LC_ALL=en_US.UTF-8 
