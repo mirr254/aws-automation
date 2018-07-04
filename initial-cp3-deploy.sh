@@ -23,7 +23,7 @@ function setUpNginx {
 
     echo "Setting up nginx server ..."
 
-    sudo apt-get update #update server libraries
+    sudo apt-get update #update server packages
     sudo apt-get install nginx
 
     #the following language configs are when the error unsupported locale setting appears
@@ -61,6 +61,19 @@ ENDOFFILE
 
     echo "Done setting up nginx server :)"
      
+}
+
+#set up ssl from letscrypt
+function setUpSSl {
+    #add certbot's team PPA to list of repos
+    sudo apt-get install software-properties-common
+    sudo add-apt-repository ppa:certbot/certbot
+    sudo apt-get update
+    sudo apt-get install python-certbot-nginx
+
+    #use certbot nginx plugin for certificate installation
+    sudo certbot --nginx #-> will get cert and certbot will edit nginx conf automatically
+
 }
 
 #flask API configurations
@@ -111,5 +124,7 @@ function setUpApi {
 }
 
 setUpNginx
+
+setUpSSl
 
 setUpApi
