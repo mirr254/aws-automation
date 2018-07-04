@@ -131,7 +131,7 @@ function runServerInBg {
     #install node
     echo "+++++++++ Configuring PM2 tool ++++++++"
     sudo apt-get update
-    sudo apt-get install nodejs
+    sudo apt-get install nodejs-legacy
     sudo apt-get install npm
 
     echo " +++++++++  Installing pm2 using npm +++++++"
