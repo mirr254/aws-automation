@@ -103,9 +103,6 @@ function setUpApi {
     # install dependancies/requirements
     sudo pip3 install -r requirements.txt
 
-    #activate the enviroment variables
-    source .env
-
     echo "Running the application..."
     
     #run the app using gunicorn
