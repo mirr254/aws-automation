@@ -118,10 +118,29 @@ function setUpApi {
     # install dependancies/requirements
     sudo pip3 install -r requirements.txt
 
-    echo "Running the application..."
-    
+    echo "Running the application using PM2..."
+
+    runServerInBg
+
+}
+
+#a function to run the server in background
+#for this case, we are going to use pm2 tool to run the server in background
+
+function runServerInBg {
+    #install node
+    echo "+++++++++ Configuring PM2 tool ++++++++"
+    sudo apt-get update
+    sudo apt-get install nodejs
+    sudo apt-get install npm
+
+    echo " +++++++++  Installing pm2 using npm +++++++"
+    sudo  npm  install pm2 -g
+
+    #run the server in background  using pm2
     #run the app using gunicorn
-    gunicorn run:app
+    pm2 start gunicorn run:app
+
 
 }
 
