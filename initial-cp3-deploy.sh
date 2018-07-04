@@ -65,6 +65,7 @@ ENDOFFILE
 
 #set up ssl from letscrypt
 function setUpSSl {
+    echo "+++++++++ Setting up SSL for the server +++++++++++++ "
     #add certbot's team PPA to list of repos
     sudo apt-get install software-properties-common
     sudo add-apt-repository ppa:certbot/certbot
