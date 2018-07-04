@@ -46,6 +46,7 @@ function setUpNginx {
     sudo cat > /etc/nginx/sites-available/brightevents.com << ENDOFFILE
         server {
             listen 80;
+            server_name brightevents.tk;
             location / {
                 proxy_pass http://127.0.0.1:8000/;
             }
