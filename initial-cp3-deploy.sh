@@ -37,6 +37,8 @@ function setUpNginx {
     if [[ -d /etc/nginx/sites-enabled/default ]] && [[ -d /etc/nginx/sites-available/default ]] ; then
         echo " nginx default directory exists. Deleting it..."
         sudo rm /etc/nginx/sites-enabled/default /etc/nginx/sites-available/default
+    else
+        sudo rm /etc/nginx/sites-enabled/default /etc/nginx/sites-available/default
     fi
 
     #create a proxy config file and a symlink to it in sites enabled
