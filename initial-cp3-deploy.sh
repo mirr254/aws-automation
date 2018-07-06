@@ -6,7 +6,7 @@
 #e.g git pull, installing dependancies, restarting gunicorn server                  #
 #####################################################################################
 
-set -e
+set -e  #exit immediately if a command  exits with non-zero status
 
 ### configurations###
 
@@ -16,7 +16,7 @@ GIT_URL=https://github.com/mirr254/Bright-Events.git
 
 ###Automation steps ###
 
-set -x
+set -x #print commands and their args as they are  executed
 
 #set up nginx
 function setUpNginx {
@@ -48,7 +48,7 @@ function setUpNginx {
     sudo cat > /etc/nginx/sites-available/brightevents.com << ENDOFFILE
         server {
             listen 80;
-            
+            server_name deploytut.tk www.deploytut.tk;
             location / {
                 proxy_pass http://127.0.0.1:8000/;
             }
