@@ -6,24 +6,6 @@
 #e.g git pull, installing dependancies, restarting gunicorn server                  #
 #####################################################################################
 
-####################################################################################
-# Kindly read the instructions before using the script.                            #
-# Set  your enviroment  variables with your own keys.                               #    
-# follow these examples or  template                                            
-# export APP_MAIL_PASSWORD='rqwg'
-# export APP_MAIL_USERNAME='samer@gmail.com'
-# export APP_SETTINGS='production' -> can be development
-# export SECRET_KEY='this is suoer scret key'
-# export SECURITY_PASSWORD_RESET_SALT='securiyt password r3set'
-# export SECURITY_PASSWORD_SALT='securiyt password s2lt'
-# export DATABASE_URL='postgress url for development'
-# export RDS_USERNAME='shgg'
-# export RDS_PASSWORD='shadff'
-# export RDS_HOSTNAME='db hostname url '
-# export RDS_DB_NAME='dbname'
-# export RDS_PORT=5432
-#################################################################################
-
 set -e  #exit immediately if a command  exits with non-zero status
 
 ### configurations###
