@@ -6,8 +6,7 @@
 #e.g git pull, installing dependancies, restarting gunicorn server                  #
 #####################################################################################
 set -o errexit #set -e  #exit immediately if a command  exits with non-zero status
-set -o pipefail
-set -o nounset
+set -o nounset #exit when the script tries to use undeclared variables.
 set -o xtrace #set -x #to trace what gets executed. Useful for debugging.
 
 ### configurations###
