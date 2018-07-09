@@ -1,12 +1,14 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #####################################################################################
 #This script is run on the remote server. It performs all the steps that one would  #
 #do manually on the server.                                                         #
 #e.g git pull, installing dependancies, restarting gunicorn server                  #
 #####################################################################################
-
-set -e  #exit immediately if a command  exits with non-zero status
+set -o errexit #set -e  #exit immediately if a command  exits with non-zero status
+set -o pipefail
+set -o nounset
+set -o xtrace #set -x #to trace what gets executed. Useful for debugging.
 
 ### configurations###
 
@@ -15,8 +17,6 @@ API_DIR=/var/www/brighteventsapi/Bright-Events
 GIT_URL=https://github.com/mirr254/Bright-Events.git
 
 ###Automation steps ###
-
-set -x #print commands and their args as they are  executed
 
 #set up nginx
 function setUpNginx {
