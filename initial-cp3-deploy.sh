@@ -34,8 +34,8 @@ function setUpNginx {
 
     #remove the nginx default pages
     #check if directory exists then delete
-    if [[ -d /etc/nginx/sites-enabled/default ]] && [[ -d /etc/nginx/sites-available/default ]] ; then
-        echo " nginx default directory exists. Deleting it..."
+    if [[ -e /etc/nginx/sites-enabled/default ]] && [[ -e /etc/nginx/sites-available/default ]] ; then
+        echo "++++++++++++++++++++++++++++ nginx default file exists. Deleting it... ++++++++++++++++"
         sudo rm /etc/nginx/sites-enabled/default /etc/nginx/sites-available/default
     fi
 
@@ -125,9 +125,14 @@ function setUpApi {
 
 }
 
+function main {
+    setUpNginx
 
-setUpNginx
+    setUpSSl
 
-setUpSSl
+    setUpApi
+}
 
-setUpApi
+main
+
+
