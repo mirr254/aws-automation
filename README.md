@@ -29,8 +29,10 @@
 `sudo vim initial-cp3-deploy.sh `
 
 - on line  `49` of the script where we have `server_name deploytut.tk www.deploytut.tk` replace these 2 with your domain names. and save the file.
-- make the script executable by ruuning the following command  
-`sudo chmod +x initial-cp3-deploy.sh`
+- make the script executable by running the following command  
+`sudo chmod +x initial-cp3-deploy.sh`  
+- run the script using the command  
+`./initial-cp3-deploy.sh`
 
 - Enjoy :)
 
